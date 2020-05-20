@@ -1,0 +1,48 @@
+Package: fec12
+Title: Data Package for 2012 Federal Elections
+Version: 0.0.0.9010
+Authors@R: c(
+    person(given = "Marium",
+           family = "Tapal",
+           role = c("aut", "cre"),
+           email = "mariumtapal@gmail.com"),
+    person(given = "Rana",
+           family = "Gahwagy",
+           role = c("aut"),
+           email = "r.w.g1@hotmail.com"),
+    person(given = "Irene",
+           family = "Ryan",
+           role = c("aut"),
+           email = "ryan.irene3@gmail.com"),
+    person(given = "Benjamin S.",
+           family = "Baumer",
+           role = c("aut"),
+           email = "ben.baumer@gmail.com")
+           )
+Description: Easily analyze relational data from the 2012 federal 
+    election cycle as reported by the Federal Election Commission.
+    This package contains data about candidates, commitees, and a
+    variety of different financial expenditures. 
+License: CC0
+Depends: 
+    R (>= 2.10),
+    dplyr,
+    readr
+Suggests:
+    testthat (>= 2.1.0),
+    scales,
+    knitr,
+    rmarkdown,
+    fs,
+    lubridate,
+    usethis,
+    vroom,
+    ggplot2,
+    stringr
+Encoding: UTF-8
+LazyData: true
+URL: http://github.com/baumer-lab/fec16
+BugReports: https://github.com/baumer-lab/fec16/issues
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.0
+VignetteBuilder: knitr
