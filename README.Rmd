@@ -1,0 +1,110 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+
+# fec16 <img src="data-raw/Sticker/hex_fec16.png" align="right" height=140/>
+
+<!-- badges: start -->
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+[![CRAN status](https://r-pkg.org/badges/version/fec12)](https://CRAN.R-project.org/package=fec16)
+[![Travis-CI Build Status](https://travis-ci.org/baumer-lab/fec12.svg?branch=master)](https://travis-ci.org/baumer-lab/fec16)
+<!-- badges: end -->
+
+
+**fec12** contains data from the [Federal Election Commission (FEC)](https://www.fec.gov/) website pertaining to candidates, committees, results, contributions from committees and individuals, and other financial [data for the United States 2011-2012 election cycle](https://www.fec.gov/data/browse-data/?tab=bulk-data). Additionally, for the datasets that are included as samples, the package includes functions that import the full versions.
+
+
+## Installation
+
+`fec12` is hosted on GitHub and call be installed by running the following:
+
+```{r, eval=FALSE}
+devtools::install_github("baumer-lab/fec12")
+```
+
+```{r message=FALSE, warning=FALSE}
+library(fec12)
+```
+
+
+## Datasets Included
+
+### Full Datasets
+
+- `candidates`: candidates registered with the FEC during the 2011-2012 election cycle
+- `committees`: committees registered with the FEC during the 2011-2012 election cycle
+- `campaigns`: the house/senate current campaigns
+- `results_house`: the house results of the 2012 general presidential election
+- `results_senate`: the senate results of the 2012 general presidential election
+- `results_president`: the final results of the 2012 general presidential election
+- `pac`: Political Action Committee (PAC) and party summary financial information
+
+### Sample Datasets (with 1000 rows each)
+
+- `individuals`: individual contributions to candidates/committees during the 2012 general presidential election
+- `contributions`: candidates and their contributions from committees during the 2012 general election
+- `expenditures`: the operating expenditures 
+- `transactions`: transactions between committees
+
+## Functions Included
+
+The following functions retrieve the entire datasets for the sampled ones listed above. The size of the raw file that is downloaded by calling each function is given for reference. All functions have an argument `n_max` which defaults to the entire dataset but the user can specify the max length of the dataset to be loaded via this argument.
+
+- `read_all_individuals()` ~ 1.45GB
+- `read_all_contributions()` ~ 15.4MB
+- `read_all_expenditures()` ~ 52.1MB
+- `read_all_transactions()` ~ 79.2MB
+
+**Note:** When these functions are run in the console, it is helpful to know the progress of the download taking place but running these functions in a R Markdown document leads to the progress bar of the download being printed repeatedly. A possible solution is to wrap the function in `invisible(utils::capture.output())` hereby suppressing the messages. 
+
+## Examples
+
+### Data Wrangling 
+
+`fec16` can be used to summarize data in order see how many candidates are running for elections (in all offices) for the two major parties:
+
+```{r, message=FALSE}
+library(dplyr)
+
+data <- candidates %>%
+  filter(cand_pty_affiliation %in% c("REP", "DEM")) %>%
+  group_by(cand_pty_affiliation) %>%
+  summarize(size = n())
+
+data
+```
+
+### Data Visualization 
+
+We can visualize the above data:
+
+```{r party-plot, message=FALSE, warning=FALSE}
+library(ggplot2)
+
+ggplot(data, aes(x = cand_pty_affiliation, y = size, fill = cand_pty_affiliation)) +
+  geom_col() +
+  labs(
+    title = "Number of Candidates Affiliated with the Two Major Parties",
+    x = "Party", y = "Count", fill = "Candidate Party Affiliation"
+  )
+```
+
+## Contributors
+
+ - [Marium Tapal](https://github.com/mariumtapal)
+ - [Irene Ryan](https://github.com/ireneryan)
+ - [Rana Gahwagy](https://github.com/ranawg)
+ - [Benjamin S. Baumer](https://github.com/beanumber)
