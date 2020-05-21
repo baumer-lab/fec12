@@ -3,11 +3,11 @@ library(tidyverse)
 file <- fs::path(tempdir(), "results12.xlsx")
 
 downloader::download(
-  "https://transition.fec.gov/pubrec/fe2012/federalelections2012_000.xlsx",
+  "https://transition.fec.gov/pubrec/fe2012/federalelections2012.xls",
   destfile = file
 )
 
-results_house <- readxl::read_excel(file, sheet = 13) %>%
+results_house <- readxl::read_excel(file, sheet = 12) %>%
    janitor::clean_names() %>%
    # delete unneccesary variables
    select(-x1, -state, -total_votes, -candidate_name, -contains("combined"),
