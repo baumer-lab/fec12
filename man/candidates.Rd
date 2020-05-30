@@ -5,14 +5,13 @@
 \alias{candidates}
 \title{Candidates Master metadata}
 \format{
-A data frame with 7397 rows and 15 columns, providing information
+A data frame with 3513 rows and 14 columns, providing information
 for each candidate:
 \describe{
 \item{cand_id}{A 9-character alpha-numeric code assigned to a candidate by the FEC, which remains
 the same across election cycles if running for the same office}
 \item{cand_name}{Candidate name}
 \item{cand_pty_affiliation}{The political party affiliation reported by the candidate}
-\item{cand_election_yr}{Candidate's election year from a Statement of Candidacy or state ballot list}
 \item{cand_office_st}{Candidate's state}
 \item{cand_office}{Candidate office with designation: H = House, P = President, S = Senate}
 \item{cand_office_district}{Congressional district number: Congressional at-large 00, Senate 00, Presidential 00}
@@ -28,7 +27,7 @@ N = Not yet a statutory candidate, P = Statutory candidate in prior cycle}
 }
 }
 \source{
-\url{https://www.fec.gov/campaign-finance-data/candidate-master-file-description/}, updated 2020-03-02
+\url{https://www.fec.gov/campaign-finance-data/candidate-master-file-description/}, updated 2020-05-30
 }
 \usage{
 candidates

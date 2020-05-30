@@ -5,8 +5,8 @@ context("Dimensions of data")
 # candidates
 
 test_that("number of columns in candidates df is correct", {
-  expect_equal(ncol(candidates), 15)
-  expect_equal(nrow(candidates), 5628)
+  expect_equal(ncol(candidates), 14)
+  expect_equal(nrow(candidates), 3513)
 })
 
 # committees
@@ -23,14 +23,14 @@ test_that("house results are accurate", {
       pull(cand_id) %>%
       unique() %>%
       length(),
-    1972
+    2199
   )
   expect_gt(
     results_house %>%
         group_by(state, district_id) %>%
         count() %>%
         nrow(),
-     438
+     446
   )
   # territories
   expect_equal(
@@ -53,7 +53,7 @@ test_that("contributions is the right size", {
   expect_equal(nrow(x), 394291)
 })
 
-# #individuals
+# individuals
 
 test_that("number of rows in individuals df is correct", {
   expect_gt(nrow(individuals), 0)

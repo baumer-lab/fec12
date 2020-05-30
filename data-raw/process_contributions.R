@@ -25,8 +25,5 @@ contributions <- read_delim(
     transaction_dt = lubridate::mdy(transaction_dt)
   ) %>%
   sample_n(1000)
-#  filter(primary_general_indicator == "G2016") %>%
-#  group_by(cand_id) %>%
-#  summarise(number_of_contributions = n(), total_contributions = sum(transaction_amount[transaction_amount>0]), net_contributions = sum(transaction_amount))
 
 usethis::use_data(contributions, overwrite = TRUE)

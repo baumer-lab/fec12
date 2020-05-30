@@ -1,8 +1,9 @@
 #' Individual Contributions Master metadata
 #'
-#' \code{read_all_individuals} returns a dataframe about the committees master data
+#' \code{read_all_individuals} returns a dataframe about transactions from individuals to candidates/committees
 #'
-#' @param n_max integer specifying the max amount of entries in the dataset, defaults to the possible maximum
+#' @param n_max Integer specifying the max amount of entries in the dataset. Defaults to the possible maximum.
+#' @param verbose A progress bar is shown if R is running interactively. Defaults to `interactive()`.
 #' @return The entire dataframe. More information about variables is at `?individuals`.
 #' @examples
 #' \dontrun{read_all_individuals()}
@@ -11,11 +12,21 @@
 #' @import readr
 #' @export
 
-read_all_individuals <- function(n_max = Inf){
-  dir <- usethis::use_zip(
-    "https://www.fec.gov/files/bulk-downloads/2012/indiv12.zip",
-    destdir = tempdir(), cleanup = TRUE
-  )
+read_all_individuals <- function(n_max = Inf, verbose = interactive()){
+  if (!verbose) {
+    invisible(utils::capture.output(
+      dir <- usethis::use_zip(
+        "https://www.fec.gov/files/bulk-downloads/2012/indiv12.zip",
+        destdir = tempdir(), cleanup = TRUE
+      )
+    )
+    )
+  } else {
+    dir <- usethis::use_zip(
+      "https://www.fec.gov/files/bulk-downloads/2012/indiv12.zip",
+      destdir = tempdir(), cleanup = TRUE
+    )
+  }
 
   indiv_path <- fs::path(dir, "itcont.txt")
 

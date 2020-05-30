@@ -67,10 +67,13 @@ results_president <- readxl::read_excel(file, sheet = 9) %>%
     won = winner_indicator,
     general_votes = general_results
   ) %>%
-  filter(cand_id != 'n/a') %>%
+  filter(cand_id != 'n/a', party != "Combined Parties:") %>%
   mutate(
     won = won == "W",
   ) %>%
-  replace_na(list(won = FALSE))
+  replace_na(list(won = FALSE)) 
+
+# remove the square brackets from some entires
+results_president$general_votes <- extract_numeric(results_president$general_votes)
 
 usethis::use_data(results_president, overwrite = TRUE)

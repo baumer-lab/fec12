@@ -1,9 +1,9 @@
 #' Any Transaction From One Committee To Another
 #'
-#' \code{read_all_transactions} returns a dataframe about the committees master data
+#' \code{read_all_transactions} returns a dataframe about transaction data
 #'
-#' @param n_max integer specifying the max amount of entries in the dataset, defaults to the possible maximum
-#' @return The entire dataframe. More information about variables is at `?transactions`.
+#' @param n_max Integer specifying the max amount of entries in the dataset. Defaults to the possible maximum.
+#' @param verbose A progress bar is shown if R is running interactively. Defaults to `interactive()`.#' @return The entire dataframe. More information about variables is at `?transactions`.
 #' @examples
 #' \dontrun{read_all_transactions()}
 #' \dontrun{read_all_transactions(n_max = 250)}
@@ -11,13 +11,23 @@
 #' @import readr
 #' @export
 
-read_all_transactions <- function(n_max = Inf) {
-  transactions_dir <- usethis::use_zip(
-    "https://www.fec.gov/files/bulk-downloads/2012/oth12.zip",
-    destdir = tempdir(), cleanup = TRUE
-  )
+read_all_transactions <- function(n_max = Inf, verbose = interactive()) {
+  if (!verbose) {
+    invisible(utils::capture.output(
+      dir <- usethis::use_zip(
+        "https://www.fec.gov/files/bulk-downloads/2012/oth12.zip",
+        destdir = tempdir(), cleanup = TRUE
+      )
+    )
+    )
+  } else {
+    dir <- usethis::use_zip(
+      "https://www.fec.gov/files/bulk-downloads/2012/oth12.zip",
+      destdir = tempdir(), cleanup = TRUE
+    )
+  }
 
-  transactions_path <- fs::path(transactions_dir, "itoth.txt")
+  transactions_path <- fs::path(dir, "itoth.txt")
 
   transactions_names <- read_csv("https://www.fec.gov/files/bulk-downloads/data_dictionaries/oth_header_file.csv") %>%
     names() %>%
