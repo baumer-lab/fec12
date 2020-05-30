@@ -16,7 +16,7 @@ read_all_contributions <- function(n_max = Inf, verbose = interactive()) {
     invisible(
       msg <- utils::capture.output(
         dir <- usethis::use_zip(
-          "https://www.fec.gov/files/bulk-downloads/2012/pas212.zip",
+          "https://www.fec.gov/files/bulk-downloads/2012/pas12.zip",
           destdir = tempdir(), cleanup = TRUE
         )
       )
