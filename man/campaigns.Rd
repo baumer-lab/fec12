@@ -5,7 +5,7 @@
 \alias{campaigns}
 \title{House/Senate Current Campaigns}
 \format{
-A data frame with 1898 rows and 25 columns, providing financial
+A data frame with 2196 rows and 25 columns, providing financial
 information for each House/Senate campaign:
 \describe{
 \item{cand_id}{A code assigned to a candidate by the FEC}

@@ -1,6 +1,6 @@
 library(tidyverse)
 
-file <- fs::path(tempdir(), "results12.xlsx")
+file <- fs::path(tempdir(), "results12.xls")
 
 downloader::download(
   "https://transition.fec.gov/pubrec/fe2012/federalelections2012.xls",
@@ -19,7 +19,7 @@ results_house <- readxl::read_excel(file, sheet = 12) %>%
      incumbent = i,
      won = ge_winner_indicator,
    ) %>%
-  filter(cand_id != 'n/a', !str_detect(cand_id, "FULL TERM")) %>%
+  filter(cand_id != 'n/a', !str_detect(cand_id, "FULL TERM", ), str_detect(cand_id, "H")) %>%
   mutate(
     primary_votes = parse_number(primary_votes),
     general_votes = parse_number(general_votes),
@@ -44,7 +44,7 @@ results_senate <- readxl::read_excel(file, sheet = 12
     incumbent = i,
     won = ge_winner_indicator
   ) %>%
-  filter(cand_id != 'n/a') %>%
+  filter(cand_id != 'n/a', str_detect(cand_id, "S")) %>%
   mutate(
     primary_votes = parse_number(primary_votes),
     won = won == "W",
@@ -67,10 +67,13 @@ results_president <- readxl::read_excel(file, sheet = 9) %>%
     won = winner_indicator,
     general_votes = general_results
   ) %>%
-  filter(cand_id != 'n/a') %>%
+  filter(cand_id != 'n/a', party != "Combined Parties:") %>%
   mutate(
     won = won == "W",
   ) %>%
-  replace_na(list(won = FALSE))
+  replace_na(list(won = FALSE)) 
+
+# remove the square brackets from some entires
+results_president$general_votes <- extract_numeric(results_president$general_votes)
 
 usethis::use_data(results_president, overwrite = TRUE)

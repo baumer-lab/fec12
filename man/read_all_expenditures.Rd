@@ -4,16 +4,18 @@
 \alias{read_all_expenditures}
 \title{Operating Expenditures}
 \usage{
-read_all_expenditures(n_max = Inf)
+read_all_expenditures(n_max = Inf, verbose = interactive())
 }
 \arguments{
-\item{n_max}{integer specifying the max amount of entries in the dataset, defaults to the possible maximum}
+\item{n_max}{Integer specifying the max amount of entries in the dataset. Defaults to the possible maximum.}
+
+\item{verbose}{A progress bar is shown if R is running interactively. Defaults to \code{interactive()}.}
 }
 \value{
 The entire dataframe. More information about variables is at \code{?expenditures}.
 }
 \description{
-\code{read_all_expenditures} returns a dataframe about the committees master data
+\code{read_all_expenditures} returns a dataframe about operating expenditure data
 }
 \examples{
 \dontrun{read_all_expenditures()}

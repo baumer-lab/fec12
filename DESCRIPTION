@@ -41,8 +41,8 @@ Suggests:
     stringr
 Encoding: UTF-8
 LazyData: true
-URL: http://github.com/baumer-lab/fec16
-BugReports: https://github.com/baumer-lab/fec16/issues
+URL: http://github.com/baumer-lab/fec12
+BugReports: https://github.com/baumer-lab/fec12/issues
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.0
 VignetteBuilder: knitr

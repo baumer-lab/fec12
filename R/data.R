@@ -2,14 +2,13 @@
 #'
 #' @description Basic information for each candidate.
 #'
-#' @format A data frame with 7397 rows and 15 columns, providing information
+#' @format A data frame with 3513 rows and 14 columns, providing information
 #' for each candidate:
 #' \describe{
 #'   \item{cand_id}{A 9-character alpha-numeric code assigned to a candidate by the FEC, which remains
 #'   the same across election cycles if running for the same office}
 #'   \item{cand_name}{Candidate name}
 #'   \item{cand_pty_affiliation}{The political party affiliation reported by the candidate}
-#'   \item{cand_election_yr}{Candidate's election year from a Statement of Candidacy or state ballot list}
 #'   \item{cand_office_st}{Candidate's state}
 #'   \item{cand_office}{Candidate office with designation: H = House, P = President, S = Senate}
 #'   \item{cand_office_district}{Congressional district number: Congressional at-large 00, Senate 00, Presidential 00}
@@ -23,7 +22,7 @@
 #'   \item{cand_st}{Candidate's Mailing address - state}
 #'   \item{cand_zip}{Candidate's Mailing address - ZIP code}
 #' }
-#' @source <https://www.fec.gov/campaign-finance-data/candidate-master-file-description/>, updated 2020-03-02
+#' @source <https://www.fec.gov/campaign-finance-data/candidate-master-file-description/>, updated 2020-05-30
 "candidates"
 
 #' Committee contributions metadata
@@ -76,7 +75,7 @@
 #'
 #' @description Provides data pertaining to each committee registered with the Federal Election Commission.
 #'
-#' @format A data frame with 17654 rows and 15 columns with information about FEC committees.
+#' @format A data frame with 14455 rows and 15 columns with information about FEC committees.
 #' \describe{
 #'   \item{cmte_id}{A 9-character alpha-numeric code assigned to a committee by the Federal Election Commission}
 #'   \item{cmte_nm}{Name of the committee}
@@ -212,7 +211,7 @@
 #'
 #' @description Summary financial information for each campaign.
 #'
-#' @format A data frame with 1898 rows and 25 columns, providing financial
+#' @format A data frame with 2196 rows and 25 columns, providing financial
 #' information for each House/Senate campaign:
 #' \describe{
 #'   \item{cand_id}{A code assigned to a candidate by the FEC}
@@ -348,7 +347,7 @@
 #'
 #' @description PAC and party summary finanicial information
 #'
-#' @format A data frame with 12049 rows and 27 columns:
+#' @format A data frame with 9462 rows and 27 columns:
 #' \describe{
 #'   \item{cmte_id}{A 9-character alpha-numeric code assigned to a committee by the Federal Election Commission}
 #'   \item{cmte_nm}{Name of the committee}

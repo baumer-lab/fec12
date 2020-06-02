@@ -24,9 +24,9 @@
 \item{footnotes}{Footnotes}
 }
 
-An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 377 rows and 10 columns.
+An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 441 rows and 10 columns.
 
-An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 619 rows and 6 columns.
+An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 427 rows and 6 columns.
 }
 \source{
 \url{https://transition.fec.gov/general/FederalElections2016.shtml}, updated 2020-03-02

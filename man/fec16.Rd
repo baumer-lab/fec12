@@ -3,9 +3,9 @@
 \docType{package}
 \name{fec16}
 \alias{fec16}
-\title{fec16: A Data Package for the 2016 Elections}
+\title{fec12: A Data Package for the 2012 Elections}
 \description{
-The fec16 package provides the following 9 datasets from the Federal Election Commission's 2015-2016 election cycle:
+The fec12 package provides the following 9 datasets from the Federal Election Commission's 2011-2012 election cycle:
 }
 \section{Datasets}{
 

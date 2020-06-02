@@ -1,8 +1,9 @@
 #' Operating Expenditures
 #'
-#' \code{read_all_expenditures} returns a dataframe about the committees master data
+#' \code{read_all_expenditures} returns a dataframe about operating expenditure data
 #'
-#' @param n_max integer specifying the max amount of entries in the dataset, defaults to the possible maximum
+#' @param n_max Integer specifying the max amount of entries in the dataset. Defaults to the possible maximum.
+#' @param verbose A progress bar is shown if R is running interactively. Defaults to `interactive()`.
 #' @return The entire dataframe. More information about variables is at `?expenditures`.
 #' @examples
 #' \dontrun{read_all_expenditures()}
@@ -11,11 +12,21 @@
 #' @import readr
 #' @export
 
-read_all_expenditures <- function(n_max = Inf) {
-  dir <- usethis::use_zip(
-    "https://www.fec.gov/files/bulk-downloads/2012/oppexp12.zip",
-    destdir = tempdir(), cleanup = TRUE
-  )
+read_all_expenditures <- function(n_max = Inf, verbose = interactive()) {
+  if (!verbose) {
+    invisible(utils::capture.output(
+      dir <- usethis::use_zip(
+        "https://www.fec.gov/files/bulk-downloads/2012/oppexp12.zip",
+        destdir = tempdir(), cleanup = TRUE
+      )
+    )
+    )
+  } else {
+    dir <- usethis::use_zip(
+      "https://www.fec.gov/files/bulk-downloads/2012/oppexp12.zip",
+      destdir = tempdir(), cleanup = TRUE
+    )
+  }
 
   oppexp_path <- fs::path(dir, "oppexp.txt")
 
