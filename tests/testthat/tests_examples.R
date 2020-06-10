@@ -23,14 +23,14 @@ test_that("house results are accurate", {
       pull(cand_id) %>%
       unique() %>%
       length(),
-    2199
+    2177
   )
-  expect_gt(
+  expect_equal(
     results_house %>%
         group_by(state, district_id) %>%
         count() %>%
         nrow(),
-     446
+     445
   )
   # territories
   expect_equal(

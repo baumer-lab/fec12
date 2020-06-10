@@ -24,7 +24,7 @@
 \item{footnotes}{Footnotes}
 }
 
-An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 441 rows and 10 columns.
+An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 363 rows and 10 columns.
 
 An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 427 rows and 6 columns.
 }
