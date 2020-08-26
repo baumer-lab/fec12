@@ -5,7 +5,8 @@ Authors@R: c(
     person(given = "Marium",
            family = "Tapal",
            role = c("aut", "cre"),
-           email = "mariumtapal@gmail.com"),
+           email = "mariumtapal@gmail.com",
+           comment = c(ORCID = "0000-0001-5093-6462")),
     person(given = "Rana",
            family = "Gahwagy",
            role = c("aut"),
@@ -23,7 +24,8 @@ Description: Easily analyze relational data from the 2012 federal
     variety of different financial expenditures. 
 License: CC0
 Depends: 
-    R (>= 2.10),
+    R (>= 2.10)
+Imports:
     dplyr,
     readr
 Suggests:
