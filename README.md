@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# fec16 <img src="data-raw/Sticker/hex_fec16.png" align="right" height=140/>
+# fec12 <img src="data-raw/sticker/hex_fec12.png" align="right" height=140/>
 
 <!-- badges: start -->
 
@@ -20,6 +20,9 @@ other financial [data for the United States 2011-2012 election
 cycle](https://www.fec.gov/data/browse-data/?tab=bulk-data).
 Additionally, for the datasets that are included as samples, the package
 includes functions that import the full versions.
+
+Please see [**fec16**](https://www.github.com/baumer-lab/fec16), a
+similar package that is on CRAN, for more documentation and examples.
 
 ## Installation
 
@@ -69,10 +72,10 @@ calling each function is given for reference. All functions have an
 argument `n_max` which defaults to the entire dataset but the user can
 specify the max length of the dataset to be loaded via this argument.
 
-  - `read_all_individuals()` ~ 250.6MB
-  - `read_all_contributions()` ~ 12.2MB
-  - `read_all_expenditures()` ~ 45.4MB
-  - `read_all_transactions()` ~ 35.6MB
+  - `read_all_individuals()` \~ 250.6MB
+  - `read_all_contributions()` \~ 12.2MB
+  - `read_all_expenditures()` \~ 45.4MB
+  - `read_all_transactions()` \~ 35.6MB
 
 ## Examples
 
@@ -93,8 +96,8 @@ data
 #> # A tibble: 2 x 2
 #>   cand_pty_affiliation  size
 #>   <chr>                <int>
-#> 1 DEM                   1879
-#> 2 REP                   2477
+#> 1 DEM                   1180
+#> 2 REP                   1472
 ```
 
 ### Data Visualization
