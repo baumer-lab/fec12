@@ -10,8 +10,14 @@ downloader::download(
 results_house <- readxl::read_excel(file, sheet = 12) %>%
    janitor::clean_names() %>%
    # delete unneccesary variables
-   select(-x1, -state, -total_votes, -candidate_name, -contains("combined"),
-          -ends_with("_la"), -candidate_name_last, -candidate_name_first) %>%
+   select(
+     -x1, -state, -total_votes, 
+     -candidate_name, 
+     -contains("combined"),
+     -ends_with("_la"), 
+     -candidate_name_last, 
+     -candidate_name_first
+   ) %>%
    rename(
      state = state_abbreviation,
      cand_id = fec_id_number,
@@ -19,7 +25,7 @@ results_house <- readxl::read_excel(file, sheet = 12) %>%
      incumbent = i,
      won = ge_winner_indicator,
    ) %>%
-  filter(cand_id != 'n/a', !str_detect(cand_id, "FULL TERM", ), str_detect(cand_id, "H")) %>%
+  filter(cand_id != 'n/a', str_detect(cand_id, "^H")) %>%
   mutate(
     primary_votes = parse_number(primary_votes),
     general_votes = parse_number(general_votes),
@@ -44,7 +50,7 @@ results_senate <- readxl::read_excel(file, sheet = 12
     incumbent = i,
     won = ge_winner_indicator
   ) %>%
-  filter(cand_id != 'n/a', str_detect(cand_id, "S")) %>%
+  filter(cand_id != 'n/a', str_detect(cand_id, "^S")) %>%
   mutate(
     primary_votes = parse_number(primary_votes),
     won = won == "W",
@@ -70,10 +76,8 @@ results_president <- readxl::read_excel(file, sheet = 9) %>%
   filter(cand_id != 'n/a', party != "Combined Parties:") %>%
   mutate(
     won = won == "W",
+    general_votes = parse_number(general_votes)
   ) %>%
   replace_na(list(won = FALSE)) 
-
-# remove the square brackets from some entires
-results_president$general_votes <- extract_numeric(results_president$general_votes)
 
 usethis::use_data(results_president, overwrite = TRUE)

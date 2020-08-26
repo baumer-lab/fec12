@@ -16,7 +16,6 @@ candidates <- read_delim(
   col_names = cand_names,
   delim = "|"
 ) %>%
-  filter(cand_election_yr == 2012) %>%
-  select(-cand_election_yr)
+  filter(cand_election_yr %in% c(2011:2012))
 
 usethis::use_data(candidates, overwrite = TRUE)

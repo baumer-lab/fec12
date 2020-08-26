@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 ```
 
 
-# fec16 <img src="data-raw/Sticker/hex_fec16.png" align="right" height=140/>
+# fec12 <img src="data-raw/sticker/hex_fec12.png" align="right" height=140/>
 
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
@@ -26,6 +26,7 @@ knitr::opts_chunk$set(
 
 **fec12** contains data from the [Federal Election Commission (FEC)](https://www.fec.gov/) website pertaining to candidates, committees, results, contributions from committees and individuals, and other financial [data for the United States 2011-2012 election cycle](https://www.fec.gov/data/browse-data/?tab=bulk-data). Additionally, for the datasets that are included as samples, the package includes functions that import the full versions.
 
+Please see [**fec16**](https://www.github.com/baumer-lab/fec16), a similar package that is on CRAN, for more documentation and examples. 
 
 ## Installation
 
